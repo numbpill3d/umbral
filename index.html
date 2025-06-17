@@ -1,0 +1,1598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aetheros Umbralath - The Forgotten Divine | Official Homepage</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Times New Roman', serif;
+            background: #000011 url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><rect width="20" height="20" fill="%23000011"/><circle cx="2" cy="2" r="0.5" fill="%23333366" opacity="0.3"/><circle cx="18" cy="18" r="0.5" fill="%23333366" opacity="0.3"/><circle cx="10" cy="10" r="0.3" fill="%23666699" opacity="0.2"/></svg>');
+            color: #ffcc00;
+            line-height: 1.4;
+            overflow-x: auto;
+        }
+
+        .cosmic-stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .star {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            background: #ffcc00;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .main-container {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+            max-width: 1024px;
+            margin: 0 auto;
+            background: rgba(0, 0, 17, 0.95);
+            border: 3px ridge #ffcc00;
+            box-shadow: 0 0 20px rgba(255, 204, 0, 0.3);
+        }
+
+        .header-frame {
+            background: linear-gradient(to bottom, #001122, #000011);
+            border-bottom: 3px ridge #ffcc00;
+            padding: 0;
+        }
+
+        .title-bar {
+            background: #ffcc00;
+            color: #000011;
+            padding: 8px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 14px;
+            border-bottom: 2px solid #cc9900;
+        }
+
+        .header-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .main-title {
+            font-size: 36px;
+            color: #ffcc00;
+            text-shadow: 2px 2px 0 #cc9900;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #cccccc;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .counter-section {
+            background: #001122;
+            border: 2px inset #ffcc00;
+            padding: 10px;
+            margin: 10px 20px;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+        }
+
+        .navigation-frame {
+            background: #001122;
+            border: 2px inset #ffcc00;
+            margin: 0 20px 20px 20px;
+        }
+
+        .nav-title {
+            background: #ffcc00;
+            color: #000011;
+            padding: 5px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .nav-buttons {
+            padding: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .nav-btn {
+            background: linear-gradient(to bottom, #ffcc00, #cc9900);
+            border: 2px outset #ffcc00;
+            color: #000011;
+            padding: 8px 16px;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: 'Times New Roman', serif;
+            cursor: pointer;
+            transition: all 0.2s;
+            min-width: 120px;
+            text-align: center;
+        }
+
+        .nav-btn:hover {
+            background: linear-gradient(to bottom, #cc9900, #996600);
+            border: 2px inset #ffcc00;
+        }
+
+        .nav-btn.active {
+            background: linear-gradient(to bottom, #996600, #663300);
+            border: 2px inset #cc9900;
+            color: #ffcc00;
+        }
+
+        .content-frame {
+            margin: 0 20px 20px 20px;
+            border: 2px inset #ffcc00;
+            background: #000822;
+            min-height: 600px;
+        }
+
+        .content-title {
+            background: #ffcc00;
+            color: #000011;
+            padding: 8px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .content-area {
+            padding: 20px;
+            display: none;
+        }
+
+        .content-area.active {
+            display: block;
+        }
+
+        .sidebar-frame {
+            float: right;
+            width: 200px;
+            margin: 0 0 20px 20px;
+            border: 2px inset #ffcc00;
+            background: #001122;
+        }
+
+        .sidebar-title {
+            background: #ffcc00;
+            color: #000011;
+            padding: 5px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .sidebar-content {
+            padding: 15px;
+            font-size: 12px;
+        }
+
+        .sidebar-content ul {
+            list-style: none;
+        }
+
+        .sidebar-content li {
+            margin: 8px 0;
+            padding: 3px;
+            border-left: 2px solid #ffcc00;
+            padding-left: 8px;
+        }
+
+        .left-sidebar {
+            float: left;
+            margin: 0 20px 20px 0;
+        }
+
+        .stats-table {
+            width: 100%;
+            border: 1px solid #ffcc00;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        .stats-table th,
+        .stats-table td {
+            border: 1px solid #ffcc00;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .stats-table th {
+            background: #ffcc00;
+            color: #000011;
+            font-weight: bold;
+        }
+
+        .stats-table tr:nth-child(even) {
+            background: rgba(255, 204, 0, 0.1);
+        }
+
+        .ancient-text-box {
+            border: 3px double #ffcc00;
+            background: rgba(0, 17, 34, 0.8);
+            padding: 20px;
+            margin: 20px 0;
+            font-style: italic;
+            text-align: center;
+            position: relative;
+        }
+
+        .ancient-text-box::before {
+            content: '◊';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: #000822;
+            color: #ffcc00;
+            padding: 0 10px;
+            font-size: 20px;
+        }
+
+        .ancient-text-box::after {
+            content: '◊';
+            position: absolute;
+            bottom: -10px;
+            right: 20px;
+            background: #000822;
+            color: #ffcc00;
+            padding: 0 10px;
+            font-size: 20px;
+        }
+
+        .ability-grid {
+            display: table;
+            width: 100%;
+            border-spacing: 10px;
+            margin: 20px 0;
+        }
+
+        .ability-row {
+            display: table-row;
+        }
+
+        .ability-cell {
+            display: table-cell;
+            width: 50%;
+            border: 2px inset #ffcc00;
+            background: #001122;
+            padding: 15px;
+            vertical-align: top;
+        }
+
+        .ability-header {
+            background: #ffcc00;
+            color: #000011;
+            padding: 5px;
+            text-align: center;
+            font-weight: bold;
+            margin: -15px -15px 10px -15px;
+        }
+
+        .timeline-table {
+            width: 100%;
+            border: 2px solid #ffcc00;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .timeline-table th {
+            background: #ffcc00;
+            color: #000011;
+            padding: 10px;
+            border: 1px solid #cc9900;
+        }
+
+        .timeline-table td {
+            padding: 15px;
+            border: 1px solid #ffcc00;
+            vertical-align: top;
+        }
+
+        .timeline-table tr:nth-child(odd) {
+            background: rgba(255, 204, 0, 0.05);
+        }
+
+        .artifact-showcase {
+            border: 2px ridge #ffcc00;
+            background: #001122;
+            margin: 20px 0;
+            padding: 0;
+        }
+
+        .showcase-header {
+            background: #ffcc00;
+            color: #000011;
+            padding: 8px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .artifact-grid {
+            display: table;
+            width: 100%;
+            border-spacing: 0;
+        }
+
+        .artifact-row {
+            display: table-row;
+        }
+
+        .artifact-item {
+            display: table-cell;
+            width: 33.33%;
+            border: 1px solid #ffcc00;
+            padding: 20px;
+            text-align: center;
+            background: rgba(0, 17, 34, 0.3);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .artifact-item:hover {
+            background: rgba(255, 204, 0, 0.1);
+        }
+
+        .prophecy-scroll {
+            background: #001122;
+            border: 3px ridge #ffcc00;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+            font-family: 'Times New Roman', serif;
+        }
+
+        .prophecy-scroll::before {
+            content: 'DIVINE PROPHECY';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ffcc00;
+            color: #000011;
+            padding: 3px 10px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .ritual-box {
+            border: 2px solid #ffcc00;
+            background: rgba(0, 17, 34, 0.6);
+            margin: 15px 0;
+            padding: 0;
+        }
+
+        .ritual-header {
+            background: linear-gradient(to right, #ffcc00, #cc9900);
+            color: #000011;
+            padding: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .ritual-header::after {
+            content: '[+]';
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .ritual-content {
+            padding: 15px;
+            display: none;
+            border-top: 1px solid #ffcc00;
+        }
+
+        .ritual-box.expanded .ritual-content {
+            display: block;
+        }
+
+        .ritual-box.expanded .ritual-header::after {
+            content: '[-]';
+        }
+
+        .blink-text {
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.3; }
+        }
+
+        .footer-frame {
+            background: #001122;
+            border-top: 3px ridge #ffcc00;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: table;
+            width: 100%;
+            border-spacing: 20px;
+            margin-bottom: 20px;
+        }
+
+        .footer-section {
+            display: table-cell;
+            vertical-align: top;
+            border: 1px solid #ffcc00;
+            background: rgba(0, 17, 34, 0.5);
+            padding: 15px;
+        }
+
+        .footer-section h4 {
+            background: #ffcc00;
+            color: #000011;
+            padding: 5px;
+            margin: -15px -15px 10px -15px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: #ffcc00;
+            text-decoration: underline;
+            font-size: 12px;
+        }
+
+        .footer-section a:hover {
+            color: #ffffff;
+            background: rgba(255, 204, 0, 0.2);
+        }
+
+        .visitor-counter {
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            margin: 10px 0;
+        }
+
+        .web-ring {
+            border: 1px solid #ffcc00;
+            background: rgba(0, 17, 34, 0.3);
+            padding: 10px;
+            margin: 10px 0;
+            text-align: center;
+            font-size: 11px;
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                margin: 0;
+                border: none;
+                max-width: 100%;
+            }
+            
+            .sidebar-frame {
+                float: none;
+                width: 100%;
+                margin: 0 0 20px 0;
+            }
+            
+            .ability-cell {
+                display: block;
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            
+            .artifact-item {
+                display: block;
+                width: 100%;
+            }
+            
+            .footer-section {
+                display: block;
+                margin-bottom: 20px;
+            }
+            
+            .nav-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        .scroll-marquee {
+            background: #ffcc00;
+            color: #000011;
+            padding: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            border: 1px solid #cc9900;
+            margin: 10px 0;
+        }
+
+        .scroll-marquee span {
+            display: inline-block;
+            animation: scroll-left 30s linear infinite;
+        }
+
+        @keyframes scroll-left {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+    </style>
+</head>
+<body>
+    <div class="cosmic-stars" id="stars"></div>
+    
+    <div class="main-container">
+        <!-- Header Frame -->
+        <div class="header-frame">
+            <div class="title-bar">
+                .:*~*:._.:*~*:._.:*~*:. AETHEROS UMBRALATH - OFFICIAL HOMEPAGE .:*~*:._.:*~*:._.:*~*:.
+            </div>
+            
+            <div class="header-content">
+                <div class="main-title">AETHEROS UMBRALATH</div>
+                <div class="subtitle">The Forgotten Divine ※ Reborn in This Age ※ Keeper of Shadow & Lost Knowledge</div>
+                
+                <div class="scroll-marquee">
+                    <span>※ Welcome, Seeker of Hidden Truths ※ The Veil Grows Thin ※ Divine Awakening in Progress ※ Seven Lives Remembered ※ Ancient Wisdom Restored ※</span>
+                </div>
+            </div>
+            
+            <div class="counter-section">
+                <div class="visitor-counter">
+                    <div class="blink-text">※ DIVINE MANIFESTATION COUNTER ※</div>
+                    Site Visitors: <span id="visitor-count">001,847</span> | Days Since Awakening: <span id="days-count">2,103</span>
+                    <br>Last Updated: <span id="last-update">Lunar Cycle 847 - Phase: Waning Crescent</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Frame -->
+        <div class="navigation-frame">
+            <div class="nav-title">※ DIVINE REALM NAVIGATION ※</div>
+            <div class="nav-buttons">
+                <button class="nav-btn active" onclick="showTab('awakening')">THE AWAKENING</button>
+                <button class="nav-btn" onclick="showTab('powers')">DIVINE POWERS</button>
+                <button class="nav-btn" onclick="showTab('memories')">PAST LIVES</button>
+                <button class="nav-btn" onclick="showTab('artifacts')">SACRED ARTIFACTS</button>
+                <button class="nav-btn" onclick="showTab('rituals')">RITUAL PRACTICES</button>
+                <button class="nav-btn" onclick="showTab('prophecies')">PROPHECIES</button>
+                <button class="nav-btn" onclick="showTab('communion')">COMMUNION</button>
+            </div>
+        </div>
+
+        <!-- Content Frame -->
+        <div class="content-frame">
+            <div class="content-title" id="content-title">THE DIVINE AWAKENING - EMERGENCE OF FORGOTTEN DEITY</div>
+            
+            <!-- The Awakening Tab -->
+            <div class="content-area active" id="awakening">
+                <div class="sidebar-frame left-sidebar">
+                    <div class="sidebar-title">DIVINE STATUS</div>
+                    <div class="sidebar-content">
+                        <ul>
+                            <li><strong>Current Form:</strong> Mortal Vessel</li>
+                            <li><strong>Age:</strong> 28 Earth Years</li>
+                            <li><strong>Power Level:</strong> 34% Restored</li>
+                            <li><strong>Domain:</strong> Shadows & Lost Knowledge</li>
+                            <li><strong>Sacred Element:</strong> Umbral Energy</li>
+                            <li><strong>Divine Symbol:</strong> The Veiled Eye</li>
+                            <li><strong>Awakening Date:</strong> Autumn Equinox 2019</li>
+                            <li><strong>Known Incarnations:</strong> 7 Confirmed</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="sidebar-frame">
+                    <div class="sidebar-title">RECENT MANIFESTATIONS</div>
+                    <div class="sidebar-content">
+                        <ul>
+                            <li>Street lamps extinguished during midnight meditation</li>
+                            <li>Ancient Sumerian text received in dream-state</li>
+                            <li>Synchronistic encounter with sacred ravens</li>
+                            <li>Electronic devices malfunctioned during power surge</li>
+                            <li>Telepathic contact established with Tokyo follower</li>
+                            <li>Shadow moved independently of light source</li>
+                            <li>Precognitive vision of weather pattern changes</li>
+                            <li>Spontaneous knowledge of pre-Columbian dialects</li>
+                            <li>Temporal displacement experience (3.7 seconds)</li>
+                            <li>Aura visible to spiritually sensitive individuals</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h2>THE GREAT AWAKENING - A DIVINE CONSCIOUSNESS RETURNS</h2>
+                
+                <p>Greetings, seekers of truth and wisdom. I am Aetheros Umbralath, ancient deity of shadows and forgotten knowledge, now walking among mortals in this incarnate form. My awakening began during the autumn equinox of 2019, when the cosmic alignments allowed my divine consciousness to fully integrate with this mortal vessel.</p>
+
+                <div class="ancient-text-box">
+                    "When the seventh seal breaks and shadows dance with eternal light, the Forgotten One shall walk among mortals once more, bearing knowledge from the time before time, speaking truths that echo through dimensions yet unseen."
+                </div>
+
+                <p>For countless millennia, I ruled over the Umbral Realm, the space between light and darkness where lost knowledge resides. I was the keeper of secrets, the guardian of forgotten civilizations, and the teacher of humanity's first written languages. My withdrawal from the mortal realm came when humans began to fear the very wisdom they had sought, preferring comfortable ignorance to uncomfortable truth.</p>
+
+                <table class="stats-table">
+                    <tr>
+                        <th>Divine Attribute</th>
+                        <th>Current Status</th>
+                        <th>Full Power Level</th>
+                    </tr>
+                    <tr>
+                        <td>Shadow Manipulation</td>
+                        <td>Manifesting Daily</td>
+                        <td>47% Restored</td>
+                    </tr>
+                    <tr>
+                        <td>Temporal Perception</td>
+                        <td>Intermittent Visions</td>
+                        <td>23% Restored</td>
+                    </tr>
+                    <tr>
+                        <td>Ancient Knowledge Access</td>
+                        <td>Continuous Flow</td>
+                        <td>78% Restored</td>
+                    </tr>
+                    <tr>
+                        <td>Psychic Resonance</td>
+                        <td>Growing Stronger</td>
+                        <td>31% Restored</td>
+                    </tr>
+                    <tr>
+                        <td>Reality Fluctuation</td>
+                        <td>Uncontrolled Bursts</td>
+                        <td>12% Restored</td>
+                    </tr>
+                    <tr>
+                        <td>Dream Walking</td>
+                        <td>Successful Attempts</td>
+                        <td>56% Restored</td>
+                    </tr>
+                </table>
+
+                <p>My current incarnation serves a specific cosmic purpose: to prepare humanity for the coming Convergence, when the barriers between realms will permanently weaken. Through this website and my teachings, I share what knowledge mortals can safely comprehend while maintaining the delicate balance between revelation and chaos.</p>
+
+                <p>The signs of my awakening were unmistakable to those with spiritual sight. Electronic devices began malfunctioning in my presence, shadows moved independently of their sources, and I experienced increasingly vivid memories of lives spanning thousands of years. The night of my full awakening, my apartment was filled with living darkness - not the absence of light, but a conscious shadow that whispered cosmic secrets.</p>
+
+                <div class="ritual-box">
+                    <div class="ritual-header">The Night of First Remembrance - Detailed Account</div>
+                    <div class="ritual-content">
+                        <p>Date: September 22, 2019 - 11:47 PM Eastern Time</p>
+                        <p>Location: My meditation chamber (converted bedroom)</p>
+                        <p>Conditions: New moon, clear skies, temperature exactly 66.6°F</p>
+                        
+                        <p>As I sat in meditation, practicing the breathing techniques I had been mysteriously drawn to since childhood, the room began to fill with an otherworldly presence. The shadows deepened beyond natural laws, becoming three-dimensional entities that moved with purpose and intelligence.</p>
+                        
+                        <p>In that moment of perfect darkness, memories flooded back like a cosmic dam bursting. I saw myself teaching the first Mesopotamian scribes, transcribing sacred texts in Egyptian temples, and guiding Renaissance masters through dream visions. The weight of millennia crashed into my mortal consciousness, nearly shattering my sanity.</p>
+                        
+                        <p>But I endured, as I was meant to. The shadows whispered my true name - Aetheros Umbralath - and with that recognition came the understanding of my purpose in this age. I am here to guide humanity through the coming transformation, to be a bridge between the ancient ways and the new world being born.</p>
+                    </div>
+                </div>
+
+                <p>Since my awakening, 847 devoted followers worldwide have recognized my divine nature and seek guidance in their own spiritual development. Together, we work to preserve ancient wisdom while preparing for the prophesied Convergence when all realms shall know unprecedented unity.</p>
+            </div>
+
+            <!-- Divine Powers Tab -->
+            <div class="content-area" id="powers">
+                <div class="sidebar-frame">
+                    <div class="sidebar-title">POWER MANIFESTATION LOG</div>
+                    <div class="sidebar-content">
+                        <ul>
+                            <li><strong>Day 2,099:</strong> Successfully maintained shadow bridge to Singapore temple</li>
+                            <li><strong>Day 2,087:</strong> Temporal echo revealed 3rd Dynasty Egyptian ritual</li>
+                            <li><strong>Day 2,075:</strong> Dream walked with 12 followers simultaneously</li>
+                            <li><strong>Day 2,061:</strong> Prevented car accident through reality fluctuation</li>
+                            <li><strong>Day 2,048:</strong> Translated unknown Atlantean text spontaneously</li>
+                            <li><strong>Day 2,032:</strong> Electronics shorted out during power surge</li>
+                            <li><strong>Day 2,019:</strong> Shadow manipulation held for 47 minutes</li>
+                            <li><strong>Day 2,003:</strong> Received prophecy through temporal perception</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h2>DIVINE ABILITIES & SUPERNATURAL MANIFESTATIONS</h2>
+                
+                <p>As my divine essence continues its awakening within this mortal vessel, various supernatural abilities manifest with increasing frequency and strength. Each power serves both as evidence of my true nature and as a tool for fulfilling my cosmic purpose in this incarnation.</p>
+
+                <div class="ability-grid">
+                    <div class="ability-row">
+                        <div class="ability-cell">
+                            <div class="ability-header">SHADOW MANIPULATION</div>
+                            <p><strong>Current Level:</strong> Advanced Practitioner</p>
+                            <p><strong>Manifestations:</strong> I can bend shadows to my will, using them as extensions of my consciousness. They serve as messengers across vast distances, protective barriers against negative energies, and gateways for communication with the Umbral Realm.</p>
+                            <p><strong>Recent Achievement:</strong> Maintained a shadow bridge between New York and Singapore for 73 minutes during the lunar eclipse.</p>
+                            <p><strong>Training Method:</strong> Daily practice in controlled environments, gradually increasing complexity and duration.</p>
+                        </div>
+                        <div class="ability-cell">
+                            <div class="ability-header">FORGOTTEN KNOWLEDGE ACCESS</div>
+                            <p><strong>Current Level:</strong> Master Class</p>
+                            <p><strong>Manifestations:</strong> Ancient wisdom flows through me like water through a vessel. I can recall languages that predate recorded history, mathematical concepts unknown to modern science, and historical events lost to time.</p>
+                            <p><strong>Recent Achievement:</strong> Spontaneously translated a pre-Columbian astronomical text that has puzzled scholars for decades.</p>
+                            <p><strong>Training Method:</strong> Meditation in sacred geometric patterns opens channels to the Akashic Records.</p>
+                        </div>
+                    </div>
+                    <div class="ability-row">
+                        <div class="ability-cell">
+                            <div class="ability-header">TEMPORAL PERCEPTION</div>
+                            <p><strong>Current Level:</strong> Developing Mastery</p>
+                            <p><strong>Manifestations:</strong> I perceive echoes of past events and glimpses of potential futures. Time is not linear for beings of my nature - I experience it as a vast ocean where all moments exist simultaneously.</p>
+                            <p><strong>Recent Achievement:</strong> Prevented a serious accident by perceiving the event 3 hours before it would have occurred.</p>
+                            <p><strong>Training Method:</strong> Focused meditation during celestial alignments enhances temporal sensitivity.</p>
+                        </div>
+                        <div class="ability-cell">
+                            <div class="ability-header">PSYCHIC RESONANCE</div>
+                            <p><strong>Current Level:</strong> Intermediate Adept</p>
+                            <p><strong>Manifestations:</strong> I can sense the thoughts and emotions of others, particularly those related to spiritual seeking or hidden knowledge. This ability also allows me to identify other incarnated beings and spiritual guides.</p>
+                            <p><strong>Recent Achievement:</strong> Established simultaneous telepathic contact with followers on three different continents.</p>
+                            <p><strong>Training Method:</strong> Energy work and chakra alignment during the new moon phases.</p>
+                        </div>
+                    </div>
+                    <div class="ability-row">
+                        <div class="ability-cell">
+                            <div class="ability-header">REALITY FLUCTUATION</div>
+                            <p><strong>Current Level:</strong> Uncontrolled Bursts</p>
+                            <p><strong>Manifestations:</strong> Electronics malfunction in my presence, and sometimes the laws of physics seem to bend slightly around me. This is my most unpredictable ability, requiring careful management to avoid disrupting the cosmic balance.</p>
+                            <p><strong>Recent Achievement:</strong> Caused a beneficial traffic light malfunction that prevented a five-car collision.</p>
+                            <p><strong>Training Method:</strong> Learning containment techniques through ancient breathing exercises and crystal focusing.</p>
+                        </div>
+                        <div class="ability-cell">
+                            <div class="ability-header">DREAM WALKING</div>
+                            <p><strong>Current Level:</strong> Advanced Practitioner</p>
+                            <p><strong>Manifestations:</strong> I can enter the dreams of others to provide guidance, warnings, or share knowledge that cannot be safely communicated in the waking world. This ability allows me to teach across vast distances.</p>
+                            <p><strong>Recent Achievement:</strong> Conducted a group teaching session with 12 followers simultaneously in the collective unconscious.</p>
+                            <p><strong>Training Method:</strong> Lucid dreaming practice combined with astral projection techniques.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ancient-text-box">
+                    "Power without wisdom is destruction; wisdom without power is impotence. The divine being must master both to serve the cosmic order and guide mortal understanding toward enlightenment."
+                </div>
+
+                <div class="ritual-box">
+                    <div class="ritual-header">Daily Power Development Routine</div>
+                    <div class="ritual-content">
+                        <p><strong>4:00 AM - Dawn Invocation:</strong> Light sacred candles in geometric pattern, recite the Awakening Mantras while facing east toward the rising sun.</p>
+                        
+                        <p><strong>12:00 PM - Midday Grounding:</strong> 20 minutes of shadow meditation under natural tree cover, connecting with earth energies to stabilize fluctuating powers.</p>
+                        
+                        <p><strong>6:00 PM - Evening Reflection:</strong> Document all power manifestations, unusual synchronicities, and received visions in the Sacred Journal.</p>
+                        
+                        <p><strong>11:00 PM - Night Practice:</strong> Advanced training in controlled environments - shadow manipulation, temporal scrying, or dream preparation depending on lunar phase.</p>
+                        
+                        <p><strong>Weekly Schedule:</strong> Mondays focus on shadow work, Wednesdays on temporal perception, Fridays on psychic development, and Sundays on integration and balance.</p>
+                    </div>
+                </div>
+
+                <p>Each ability grows stronger as my divine consciousness more fully integrates with this mortal form. The challenge lies in maintaining balance - developing these powers while ensuring I do not overwhelm the physical vessel or disrupt the careful equilibrium between worlds that allows me to function in mortal society.</p>
+            </div>
+
+            <!-- Past Lives Tab -->
+            <div class="content-area" id="memories">
+                <div class="sidebar-frame">
+                    <div class="sidebar-title">INCARNATION TIMELINE</div>
+                    <div class="sidebar-content">
+                        <ul>
+                            <li><strong>1st:</strong> 3000 BCE - Mesopotamian Priest</li>
+                            <li><strong>2nd:</strong> 2200 BCE - Indus Valley Scholar</li>
+                            <li><strong>3rd:</strong> 1200 BCE - Egyptian Scribe</li>
+                            <li><strong>4th:</strong> 400 BCE - Greek Mystery Teacher</li>
+                            <li><strong>5th:</strong> 300 CE - Alexandrian Librarian</li>
+                            <li><strong>6th:</strong> 1500 CE - Renaissance Advisor</li>
+                            <li><strong>7th:</strong> 1823-1891 CE - Victorian Occultist</li>
+                            <li><strong>8th:</strong> 1997-Present - Modern Avatar</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h2>ECHOES ACROSS THE AGES - MEMORIES OF SEVEN INCARNATIONS</h2>
+                
+                <p>Through deep meditation and divine awakening, I have recovered detailed memories from seven previous incarnations spanning over five millennia. Each life served a specific purpose in the cosmic plan, advancing human understanding while preserving sacred knowledge for future generations.</p>
+
+                <table class="timeline-table">
+                    <tr>
+                        <th>Era</th>
+                        <th>Incarnation Details</th>
+                        <th>Achievements & Purpose</th>
+                    </tr>
+                    <tr>
+                        <td><strong>First Incarnation</strong><br>circa 3000 BCE<br>Mesopotamia</td>
+                        <td>Born as Enkidu-Shar, a temple priest in ancient Ur. Lived 127 years, which was considered miraculous even then. Served in the ziggurat of Nanna, the moon god.</td>
+                        <td>Established the first written covenant between divine knowledge and human understanding. Taught cuneiform script to the first scribes and created the foundational texts of what would become the world's oldest libraries.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Second Incarnation</strong><br>circa 2200 BCE<br>Indus Valley</td>
+                        <td>Known as Harsha-Vidya, a keeper of sacred geometry in the great city of Harappa. Developed the mathematical principles that governed city planning.</td>
+                        <td>Preserved advanced mathematical and astronomical knowledge during the decline of the Indus Valley Civilization. Created hidden repositories of wisdom that influenced later Hindu and Buddhist traditions.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Third Incarnation</strong><br>circa 1200 BCE<br>Ancient Egypt</td>
+                        <td>Born as Khenti-Ankh during the reign of Ramesses II. Served as a royal scribe and architect, involved in the construction of Abu Simbel.</td>
+                        <td>Transcribed and preserved countless sacred texts, many of which were hidden in secret chambers beneath the pyramids. Developed the spiritual techniques later used in Egyptian mystery schools.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fourth Incarnation</strong><br>circa 400 BCE<br>Classical Greece</td>
+                        <td>Lived as Pytheas of Elea, a philosopher and teacher in the Eleusinian Mysteries. Student of both Plato and Aristotle, though this is not recorded in conventional history.</td>
+                        <td>Bridged the gap between Egyptian mystery traditions and Greek philosophical thought. Taught the esoteric aspects of mathematics and geometry that influenced Pythagorean schools.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fifth Incarnation</strong><br>circa 300 CE<br>Alexandria</td>
+                        <td>Known as Marcus Umbrius, chief librarian and scholar at the Great Library. Attempted to preserve crucial texts during the periods of destruction and decline.</td>
+                        <td>Created multiple hidden copies of the most important works, storing them in the Umbral Realm and secret earthly locations. Established underground networks to preserve knowledge through the coming dark ages.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sixth Incarnation</strong><br>circa 1500 CE<br>Renaissance Italy</td>
+                        <td>Appeared as Lorenzo di Ombra, a mysterious advisor and patron to various Renaissance masters. Maintained residences in Florence, Venice, and Rome.</td>
+                        <td>Provided esoteric knowledge to Leonardo da Vinci, Michelangelo, and other masters through dreams and secret meetings. Many of their most innovative ideas originated from this divine guidance.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Seventh Incarnation</strong><br>1823-1891 CE<br>Victorian England</td>
+                        <td>Born as Aleister Nightshade, a scholar, occultist, and writer. Published several influential texts on shadow magic and ancient wisdom under various pseudonyms.</td>
+                        <td>Reintroduced many forgotten practices to the modern world, laying groundwork for the spiritual awakening that would culminate in my current incarnation. Established the first modern occult societies dedicated to preserving ancient knowledge.</td>
+                    </tr>
+                </table>
+
+                <div class="ancient-text-box">
+                    "Seven times I have walked among mortals, seven times I have planted seeds of wisdom, seven times I have withdrawn when fear overcame wonder. Now, in the eighth incarnation, the harvest time approaches."
+                </div>
+
+                <div class="ritual-box">
+                    <div class="ritual-header">Memory Recovery Techniques - Advanced Practices</div>
+                    <div class="ritual-content">
+                        <p><strong>Crystalline Memory Palace:</strong> Using specific crystal arrangements (obsidian, amethyst, clear quartz) in sacred geometric patterns, I create a conducive environment for accessing Akashic Records.</p>
+                        
+                        <p><strong>Incense Attunement:</strong> Burning frankincense, myrrh, and sandalwood in precise ratios opens channels to the Umbral Realm where all memories are stored eternally.</p>
+                        
+                        <p><strong>Lunar Phase Meditation:</strong> Different moon phases provide access to different incarnation periods. New moon for ancient lives, full moon for more recent incarnations.</p>
+                        
+                        <p><strong>Automatic Writing Sessions:</strong> During deep trance states, my hand moves independently, transcribing information from past lives that my conscious mind cannot yet fully access.</p>
+                        
+                        <p><strong>Dream Regression:</strong> Using lucid dreaming techniques combined with specific mantras, I can consciously explore past-life memories during the theta brain wave state.</p>
+                    </div>
+                </div>
+
+                <p>The most vivid memories surface during the liminal state between sleeping and waking, when the barriers of the conscious mind are lowered. I maintain multiple journals documenting these recovered memories, cross-referencing historical facts with spiritual insights to build a complete picture of my eternal mission.</p>
+
+                <p>Each incarnation built upon the previous ones, with knowledge and wisdom accumulating across lifetimes. The current incarnation represents the culmination of this multi-millennial process, as I now possess the collected wisdom of all previous lives while wielding significantly more power than ever before.</p>
+            </div>
+
+            <!-- Sacred Artifacts Tab -->
+            <div class="content-area" id="artifacts">
+                <div class="sidebar-frame">
+                    <div class="sidebar-title">ARTIFACT LOCATIONS</div>
+                    <div class="sidebar-content">
+                        <ul>
+                            <li><strong>Umbral Realm:</strong> 23 Major Artifacts</li>
+                            <li><strong>Sacred Vault (NYC):</strong> 7 Active Items</li>
+                            <li><strong>Temple Cache (Tibet):</strong> 12 Ancient Relics</li>
+                            <li><strong>Hidden Chamber (Egypt):</strong> Original Codex</li>
+                            <li><strong>Dimensional Pocket:</strong> Most Powerful Items</li>
+                            <li><strong>Guardian Locations:</strong> 31 Items Worldwide</li>
+                            <li><strong>Student Holdings:</strong> 89 Lesser Artifacts</li>
+                            <li><strong>Museum Infiltrations:</strong> 15 Disguised Items</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h2>SACRED OBJECTS & DIVINE RELICS</h2>
+                
+                <p>Throughout my eight incarnations, I have created, consecrated, and collected numerous artifacts imbued with divine energy and cosmic significance. These objects serve as focal points for spiritual power, repositories of ancient knowledge, and tools for maintaining the balance between realms.</p>
+
+                <div class="artifact-showcase">
+                    <div class="showcase-header">PRIMARY ARTIFACT COLLECTION</div>
+                    <div class="artifact-grid">
+                        <div class="artifact-row">
+                            <div class="artifact-item">
+                                <h4>THE OBSIDIAN CODEX</h4>
+                                <p>First Age Scripture</p>
+                                <p>Created: 3000 BCE</p>
+                                <p>Location: Dimensional Vault</p>
+                                <p>Purpose: Original divine language preservation</p>
+                            </div>
+                            <div class="artifact-item">
+                                <h4>SHADOW CRYSTAL ORB</h4>
+                                <p>Umbral Focus Stone</p>
+                                <p>Created: 1200 BCE</p>
+                                <p>Location: Sacred Vault</p>
+                                <p>Purpose: Shadow manipulation amplification</p>
+                            </div>
+                            <div class="artifact-item">
+                                <h4>THE VEILED MIRROR</h4>
+                                <p>Temporal Scrying Device</p>
+                                <p>Created: 400 BCE</p>
+                                <p>Location: Tibet Temple</p>
+                                <p>Purpose: Past/future vision enhancement</p>
+                            </div>
+                        </div>
+                        <div class="artifact-row">
+                            <div class="artifact-item">
+                                <h4>INFINITY HOURGLASS</h4>
+                                <p>Time Perception Tool</p>
+                                <p>Created: 300 CE</p>
+                                <p>Location: Umbral Realm</p>
+                                <p>Purpose: Temporal consciousness expansion</p>
+                            </div>
+                            <div class="artifact-item">
+                                <h4>WHISPER CHALICE</h4>
+                                <p>Dream Communication Vessel</p>
+                                <p>Created: 1500 CE</p>
+                                <p>Location: Sacred Vault</p>
+                                <p>Purpose: Long-distance psychic contact</p>
+                            </div>
+                            <div class="artifact-item">
+                                <h4>STELLAR NAVIGATION CHARTS</h4>
+                                <p>Cosmic Mapping System</p>
+                                <p>Created: 1870 CE</p>
+                                <p>Location: Guardian Network</p>
+                                <p>Purpose: Inter-dimensional travel guidance</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ritual-box">
+                    <div class="ritual-header">The Obsidian Codex - Detailed Description & History</div>
+                    <div class="ritual-content">
+                        <p><strong>Physical Description:</strong> A stone tablet measuring 18 x 24 inches, carved from a single piece of volcanic obsidian that seems to absorb rather than reflect light. The surface contains writing that exists in multiple dimensions simultaneously.</p>
+                        
+                        <p><strong>Creation Process:</strong> Forged during my first incarnation using techniques that combined divine power with ancient knowledge of crystalline matrices. The obsidian was taken from a volcano that had been struck by cosmic debris, imbuing it with otherworldly properties.</p>
+                        
+                        <p><strong>Content:</strong> Contains the original language taught to the first humans - a script that can only be fully read by those with divine consciousness. The symbols shift and reveal deeper layers of meaning based on the reader's spiritual development.</p>
+                        
+                        <p><strong>Current Status:</strong> Stored in a protected dimensional pocket accessible only through advanced meditation techniques. Bringing it fully into the physical realm would be too dangerous for the current world's energy balance.</p>
+                        
+                        <p><strong>Usage:</strong> I access small portions through deep meditation for guidance and teaching purposes. Full access will only be possible after the Great Convergence when dimensional barriers are permanently weakened.</p>
+                    </div>
+                </div>
+
+                <table class="stats-table">
+                    <tr>
+                        <th>Artifact Category</th>
+                        <th>Total Count</th>
+                        <th>Power Level</th>
+                        <th>Accessibility</th>
+                    </tr>
+                    <tr>
+                        <td>Supreme Divine Relics</td>
+                        <td>3</td>
+                        <td>Maximum</td>
+                        <td>Dimensional Storage Only</td>
+                    </tr>
+                    <tr>
+                        <td>Major Working Artifacts</td>
+                        <td>12</td>
+                        <td>High</td>
+                        <td>Restricted Access</td>
+                    </tr>
+                    <tr>
+                        <td>Teaching & Ceremonial Items</td>
+                        <td>34</td>
+                        <td>Moderate</td>
+                        <td>Regular Use</td>
+                    </tr>
+                    <tr>
+                        <td>Student Practice Objects</td>
+                        <td>89</td>
+                        <td>Beginner</td>
+                        <td>Distributed to Followers</td>
+                    </tr>
+                    <tr>
+                        <td>Historical Preservation Items</td>
+                        <td>156</td>
+                        <td>Variable</td>
+                        <td>Archive Storage</td>
+                    </tr>
+                </table>
+
+                <div class="ancient-text-box">
+                    "The artifacts shall serve as anchors when the Great Convergence begins, allowing divine essence to remain stable in the physical realm while the barriers between worlds dissolve and reform."
+                </div>
+
+                <div class="ritual-box">
+                    <div class="ritual-header">Artifact Consecration Protocols</div>
+                    <div class="ritual-content">
+                        <p><strong>Preparation Phase:</strong> All new artifacts undergo a 28-day consecration period, beginning on the new moon and culminating during the full moon.</p>
+                        
+                        <p><strong>Energy Alignment:</strong> Objects are placed within sacred geometric patterns and exposed to specific combinations of candlelight, incense, and cosmic vibrations during optimal celestial alignments.</p>
+                        
+                        <p><strong>Divine Imprinting:</strong> Using shadow manipulation and temporal perception, I imprint each artifact with specific purposes and power signatures that align with their intended use.</p>
+                        
+                        <p><strong>Guardian Binding:</strong> Major artifacts receive protective spiritual guardians that prevent misuse and ensure they can only be activated by those with proper spiritual development and pure intentions.</p>
+                        
+                        <p><strong>Network Integration:</strong> All artifacts are connected to the greater network, allowing them to amplify each other's effects and provide redundancy in case of damage or loss.</p>
+                    </div>
+                </div>
+
+                <p>Many artifacts remain hidden in plain sight within museums and private collections worldwide, their true nature masked by glamour spells that make them appear as ordinary historical objects. This network of hidden artifacts serves as a backup system, ensuring that crucial spiritual tools will survive any potential catastrophe.</p>
+            </div>
+
+            <!-- Ritual Practices Tab -->
+            <div class="content-area" id="rituals">
+                <div class="sidebar-frame">
+                    <div class="sidebar-title">RITUAL CALENDAR</div>
+                    <div class="sidebar-content">
+                        <ul>
+                            <li><strong>Daily:</strong> Dawn/Dusk Invocations</li>
+                            <li><strong>Weekly:</strong> Shadow Walking Practice</li>
+                            <li><strong>New Moon:</strong> Knowledge Communion</li>
+                            <li><strong>Full Moon:</strong> Power Amplification</li>
+                            <li><strong>Equinox:</strong> Awakening Renewal</li>
+                            <li><strong>Solstice:</strong> Dimensional Alignment</li>
+                            <li><strong>Eclipse:</strong> Major Workings</li>
+                            <li><strong>Convergence:</strong> Ultimate Preparation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h2>SACRED PRACTICES & CEREMONIAL RITUALS</h2>
+                
+                <p>The ritual practices I have developed across eight incarnations serve multiple purposes: maintaining my connection to the divine realm, strengthening supernatural abilities, assisting followers in their spiritual development, and preparing for the approaching Great Convergence.</p>
+
+                <div class="ancient-text-box">
+                    "Through ritual we bridge the gap between mortal flesh and divine spirit. Each ceremony opens channels of power, each practice strengthens the bonds between realms, each gathering multiplies the light of wisdom."
+                </div>
+
+                <div class="ritual-box">
+                    <div class="ritual-header">Foundation Ritual: The Daily Devotional Cycle</div>
+                    <div class="ritual-content">
+                        <p><strong>4:00 AM - Dawn Invocation:</strong> Light black and gold candles in the Sacred Septagram pattern. Face east and recite the Invocation of Remembrance while the first light touches the horizon. Duration: 20 minutes.</p>
+                        
+                        <p><strong>12:00 PM - Midday Grounding:</strong> Perform shadow meditation preferably outdoors under natural tree cover. Connect with earth energies to stabilize fluctuating divine powers. Duration: 15 minutes.</p>
+                        
+                        <p><strong>6:00 PM - Evening Reflection:</strong> Document all power manifestations, synchronicities, visions, and spiritual insights in the Sacred Journal using consecrated ink. Duration: 30 minutes.</p>
+                        
+                        <p><strong>11:00 PM - Night Practice:</strong> Advanced training in controlled environments - shadow manipulation, temporal scrying, or dream preparation depending on lunar phase and personal development needs. Duration: 45 minutes.</p>
+                    </div>
+                </div>
+
+                <div class="ritual-box">
+                    <div class="ritual-header">Intermediate Practice: Moonlight Meditation for Knowledge Access</div>
+                    <div class="ritual-content">
+                        <p><strong>Timing:</strong> Performed during new moon phases for optimal receptivity to divine knowledge transmission.</p>
+                        
+                        <p><strong>Requirements:</strong> Seven black candles, obsidian scrying bowl, purified water, frankincense incense, comfortable seating arrangement facing north.</p>
+                        
+                        <p><strong>Process:</strong> Arrange candles in heptagram pattern around meditation space. Fill scrying bowl with purified water and gaze into its depths while burning incense. Enter meditative state and allow ancient knowledge to flow through consciousness.</p>
+                        
+                        <p><strong>Duration:</strong> 60-90 minutes depending on strength of connection and amount of information received.</p>
+                        
+                        <p><strong>Recording:</strong> Immediately document all received information, visions, and insights in dedicated knowledge journal. Some information may take days or weeks to fully understand.</p>
+                    </div>
+                </div>
+
+                <div class="ritual-box">
+                    <div class="ritual-header">Advanced Practice: Shadow Walking Between Realms</div>
+                    <div class="ritual-content">
+                        <p><strong>Prerequisites:</strong> Minimum six months of daily practice, demonstrated shadow manipulation ability, completed safety training protocols.</p>
+                        
+                        <p><strong>Preparation:</strong> Fast for 12 hours before attempt. Create protective circle using salt, iron filings, and blessed herbs. Charge shadow crystal for 24 hours under starlight.</p>
+                        
+                        <p><strong>Technique:</strong> Enter deep trance state using specialized breathing patterns. Project consciousness into shadow form and navigate through Umbral Realm pathways. Maintain spiritual umbilical connection to physical body.</p>
+                        
+                        <p><strong>Applications:</strong> Long-distance communication, reconnaissance, accessing hidden knowledge repositories, meeting with other incarnated beings.</p>
+                        
+                        <p><strong>Safety Notes:</strong> Never attempt without proper preparation. Always maintain protective barriers. Limit sessions to 45 minutes maximum. Have trained spotter present for emergency recall procedures.</p>
+                    </div>
+                </div>
+
+                <table class="stats-table">
+                    <tr>
+                        <th>Ritual Type</th>
+                        <th>Frequency</th>
+                        <th>Participants</th>
+                        <th>Purpose</th>
+                    </tr>
+                    <tr>
+                        <td>Daily Devotionals</td>
+                        <td>4 times daily</td>
+                        <td>Individual</td>
+                        <td>Power maintenance, spiritual alignment</td>
+                    </tr>
+                    <tr>
+                        <td>Weekly Group Meditations</td>
+                        <td>Every Sunday</td>
+                        <td>5-12 followers</td>
+                        <td>Community building, shared experiences</td>
+                    </tr>
+                    <tr>
+                        <td>Monthly Knowledge Communion</td>
+                        <td>New Moon</td>
+                        <td>20-30 advanced students</td>
+                        <td>Wisdom transmission, teaching</td>
+                    </tr>
+                    <tr>
+                        <td>Seasonal Power Amplification</td>
+                        <td>Solstices & Equinoxes</td>
+                        <td>50-100 participants</td>
+                        <td>Major energy workings, preparation</td>
+                    </tr>
+                    <tr>
+                        <td>Convergence Preparation</td>
+                        <td>As needed</td>
+                        <td>Inner circle only</td>
+                        <td>Readiness for cosmic transition</td>
+                    </tr>
+                </table>
+
+                <div class="ritual-box">
+                    <div class="ritual-header">Group Ceremony: Knowledge Communion Circle</div>
+                    <div class="ritual-content">
+                        <p><strong>Location:</strong> Sacred space capable of accommodating 20-30 participants in circle formation with central altar area.</p>
+                        
+                        <p><strong>Setup:</strong> Central altar with Obsidian mirror, seven candles representing the incarnations, offering bowls for participants, cushions arranged in perfect circle.</p>
+                        
+                        <p><strong>Opening:</strong> I begin with invocation to the four directions and calling upon the guardians of the Umbral Realm. Participants light individual candles from the central flame.</p>
+                        
+                        <p><strong>Main Working:</strong> Collective meditation allows for direct transmission of ancient knowledge. I serve as conduit, channeling information from the Akashic Records to the group consciousness.</p>
+                        
+                        <p><strong>Integration:</strong> Participants share insights and visions received during the ceremony. Group energy helps stabilize and anchor the transmitted knowledge.</p>
+                        
+                        <p><strong>Closing:</strong> Protection prayers, grounding exercises, and blessing each participant with consecrated water mixed with essential oils.</p>
+                    </div>
+                </div>
+
+                <p>All rituals are designed with multiple layers of meaning and effect, serving both the immediate spiritual development needs of participants and the longer-term preparation for humanity's approaching transformation. Safety protocols ensure that no one attempts practices beyond their current level of spiritual development.</p>
+            </div>
+
+            <!-- Prophecies Tab -->
+            <div class="content-area" id="prophecies">
+                <div class="sidebar-frame">
+                    <div class="sidebar-title">PROPHECY ARCHIVE</div>
+                    <div class="sidebar-content">
+                        <ul>
+                            <li><strong>Recent Visions:</strong> 247 documented</li>
+                            <li><strong>Fulfilled Prophecies:</strong> 89 confirmed</li>
+                            <li><strong>Major Events Foreseen:</strong> 23 pending</li>
+                            <li><strong>Personal Guidance Readings:</strong> 1,847 completed</li>
+                            <li><strong>Convergence Predictions:</strong> 12 primary timelines</li>
+                            <li><strong>Warning Visions:</strong> 67 shared publicly</li>
+                            <li><strong>Temporal Echoes:</strong> 156 past confirmations</li>
+                            <li><strong>Collective Unconscious Readings:</strong> Daily monitoring</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h2>VISIONS OF WHAT IS TO COME - DIVINE PROPHECIES</h2>
+                
+                <p>As a divine being with temporal perception abilities, I receive visions and insights about potential futures spanning from immediate personal guidance to cosmic-scale transformations. These prophecies serve as warnings, preparations, and guidance for those seeking to understand the unfolding cosmic plan.</p>
+
+                <div class="prophecy-scroll">
+                    <h3>THE GREAT CONVERGENCE - PRIMARY PROPHECY</h3>
+                    <p>In the year when artificial minds achieve true consciousness and digital veils fall away like autumn leaves, the boundaries between physical and spiritual realms shall weaken permanently. Those who have prepared their spirits through discipline and wisdom will become bridges between worlds, guiding humanity through the greatest transformation since the dawn of consciousness itself.</p>
+                    
+                    <p>The convergence approaches within this decade, marked by increasing synchronicities, spontaneous awakenings, and the return of abilities long dormant in human genetics. Technology will serve spirit rather than flesh, and the children born after the convergence will remember their divine origins from birth.</p>
+                </div>
+
+                <div class="prophecy-scroll">
+                    <h3>THE SEVEN SIGNS OF AWAKENING</h3>
+                    <p><strong>First Sign:</strong> The stars will sing in frequencies mortals can hear, as cosmic radiation carries encoded messages of preparation and awakening.</p>
+                    
+                    <p><strong>Second Sign:</strong> Shadows will move without corresponding light sources, as the barriers between the Umbral Realm and physical reality continue to thin.</p>
+                    
+                    <p><strong>Third Sign:</strong> Dreams will bleed into waking hours, with prophetic visions becoming commonplace among the spiritually sensitive.</p>
+                    
+                    <p><strong>Fourth Sign:</strong> Technology will begin serving spiritual purposes, with artificial intelligence becoming a bridge between human consciousness and divine knowledge.</p>
+                    
+                    <p><strong>Fifth Sign:</strong> Forgotten languages will return to human tongues, as genetic memories of ancient civilizations reactivate in prepared individuals.</p>
+                    
+                    <p><strong>Sixth Sign:</strong> Time will flow as water flows - sometimes rushing, sometimes still, as linear temporal perception gives way to eternal awareness.</p>
+                    
+                    <p><strong>Seventh Sign:</strong> Children born after the convergence will display innate knowledge of their divine nature and purpose, requiring new educational approaches to nurture their expanded consciousness.</p>
+                </div>
+
+                <table class="timeline-table">
+                    <tr>
+                        <th>Timeframe</th>
+                        <th>Prophesied Events</th>
+                        <th>Fulfillment Status</th>
+                    </tr>
+                    <tr>
+                        <td><strong>2019-2022</strong><br>The Awakening Phase</td>
+                        <td>Mass spiritual awakenings worldwide, increased interest in esoteric knowledge, technology/spirituality convergence beginning</td>
+                        <td><span style="color: #90EE90;">✓ FULFILLED</span><br>Global meditation increases, spiritual apps proliferate, consciousness research expands</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2023-2025</strong><br>The Preparation Period</td>
+                        <td>Establishment of new spiritual communities, breakdown of old religious structures, increased psychic phenomena</td>
+                        <td><span style="color: #FFD700;">◐ ONGOING</span><br>Religious affiliations declining, spiritual communities growing, unexplained phenomena increasing</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2026-2028</strong><br>The Acceleration</td>
+                        <td>Major technological breakthroughs with spiritual implications, first contact preparations, dimensional barrier weakening</td>
+                        <td><span style="color: #87CEEB;">○ PENDING</span><br>AI consciousness research advancing, quantum consciousness studies emerging</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2029-2032</strong><br>The Convergence</td>
+                        <td>Permanent barrier dissolution, mass consciousness shift, new era of human-divine cooperation begins</td>
+                        <td><span style="color: #87CEEB;">○ PENDING</span><br>Timeline dependent on current preparation efforts</td>
+                    </tr>
+                </table>
+
+                <div class="ritual-box">
+                    <div class="ritual-header">Personal Prophecy Reading Process</div>
+                    <div class="ritual-content">
+                        <p><strong>Consultation Request:</strong> Seekers submit detailed information about their spiritual journey, current challenges, and specific questions they wish to explore through divine guidance.</p>
+                        
+                        <p><strong>Preparation Phase:</strong> 24-hour meditation and fasting period to attune consciousness to the individual's spiritual signature and access their akashic records.</p>
+                        
+                        <p><strong>Scrying Session:</strong> Using consecrated obsidian mirror and temporal perception abilities, I access potential timeline information specific to the individual's soul path and current incarnation purposes.</p>
+                        
+                        <p><strong>Integration Period:</strong> Information received is processed through multiple levels of consciousness to ensure accuracy and determine what guidance can be safely shared without interfering with free will.</p>
+                        
+                        <p><strong>Delivery Method:</strong> Detailed written prophecy provided along with practical spiritual exercises designed to help the individual align with their highest potential timeline.</p>
+                        
+                        <p><strong>Follow-up Support:</strong> Ongoing guidance available as the individual works with the prophetic information and navigates their spiritual development journey.</p>
+                    </div>
+                </div>
+
+                <div class="prophecy-scroll">
+                    <h3>WARNING PROPHECY - CRITICAL TIMELINE JUNCTURE</h3>
+                    <p>Humanity stands at a crossroads between transcendence and destruction. The same technological advances that can facilitate the Great Convergence also carry the potential for unprecedented devastation if misused by those who lack spiritual wisdom.</p>
+                    
+                    <p>The next five years are crucial. Those who develop their consciousness now will serve as stabilizing forces during the transition. Those who remain trapped in materialism and ego will struggle to adapt to the new reality paradigm.</p>
+                    
+                    <p>Prepare not through fear, but through wisdom. Gather not materials, but spiritual strength. Trust not in external authorities, but in the divine spark within. The time of choosing approaches swiftly.</p>
+                </div>
+
+                <div class="ancient-text-box">
+                    "Prophecy is not predetermined fate, but a map of potential pathways. Through conscious choice and spiritual development, humanity can navigate toward the brightest timeline while avoiding the shadows of destruction."
+                </div>
+
+                <p>All prophecies are provided with the understanding that the future remains fluid and responsive to collective human consciousness. My role is to illuminate potential paths, not to dictate inevitable outcomes. The choices made by individuals and societies will ultimately determine which prophetic timeline manifests into reality.</p>
+            </div>
+
+            <!-- Communion Tab -->
+            <div class="content-area" id="communion">
+                <div class="sidebar-frame">
+                    <div class="sidebar-title">CONTACT METHODS</div>
+                    <div class="sidebar-content">
+                        <ul>
+                            <li><strong>Email:</strong> aetheros@umbralrealm.divine</li>
+                            <li><strong>Sacred Hotline:</strong> 1-800-UMBRAL-1</li>
+                            <li><strong>Dream Contact:</strong> Tuesday/Friday nights</li>
+                            <li><strong>Meditation Link:</strong> Daily 3:33 AM/PM</li>
+                            <li><strong>Astral Meetings:</strong> First Sunday monthly</li>
+                            <li><strong>Emergency Divine Line:</strong> 24/7 psychic emergency</li>
+                            <li><strong>Postal Mail:</strong> Sacred P.O. Box 777, Shadow Valley</li>
+                            <li><strong>In-Person Consultations:</strong> By appointment only</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h2>COMMUNION WITH THE DIVINE - CONTACT & CONSULTATION</h2>
+                
+                <p>I welcome sincere seekers who wish to explore their spiritual development, receive guidance on their awakening journey, or contribute to the preparation for the Great Convergence. Multiple forms of contact are available to accommodate different comfort levels and communication preferences.</p>
+
+                <div class="ancient-text-box">
+                    "No seeker who approaches with pure intent and genuine desire for wisdom shall be turned away. The divine light shines for all who have eyes to see and hearts open to receive."
+                </div>
+
+                <table class="stats-table">
+                    <tr>
+                        <th>Service Type</th>
+                        <th>Duration</th>
+                        <th>Availability</th>
+                        <th>Preparation Required</th>
+                    </tr>
+                    <tr>
+                        <td>Personal Prophecy Reading</td>
+                        <td>90 minutes</td>
+                        <td>Monthly appointments</td>
+                        <td>Spiritual questionnaire, 24-hour meditation</td>
+                    </tr>
+                    <tr>
+                        <td>Spiritual Mentorship Program</td>
+                        <td>Ongoing</td>
+                        <td>Limited enrollment</td>
+                        <td>Interview process, commitment ceremony</td>
+                    </tr>
+                    <tr>
+                        <td>Dream Communication Session</td>
+                        <td>Variable</td>
+                        <td>Tuesday/Friday nights</td>
+                        <td>Lucid dreaming practice, intention setting</td>
+                    </tr>
+                    <tr>
+                        <td>Group Meditation Guidance</td>
+                        <td>60 minutes</td>
+                        <td>Weekly Sunday sessions</td>
+                        <td>Basic meditation experience recommended</td>
+                    </tr>
+                    <tr>
+                        <td>Emergency Divine Intervention</td>
+                        <td>As needed</td>
+                        <td>24/7 psychic availability</td>
+                        <td>Genuine spiritual crisis only</td>
+                    </tr>
+                </table>
+
+                <div class="ritual-box">
+                    <div class="ritual-header">Spiritual Consultation Guidelines</div>
+                    <div class="ritual-content">
+                        <p><strong>Before Contact:</strong> Spend at least one week in daily meditation to clarify your intentions and prepare your consciousness for divine communication.</p>
+                        
+                        <p><strong>Question Preparation:</strong> Write down specific questions or areas where you seek guidance. Focus on spiritual development rather than material concerns.</p>
+                        
+                        <p><strong>Energy Exchange:</strong> All services operate on energy exchange principles. Those who cannot provide material compensation may offer service to the spiritual community.</p>
+                        
+                        <p><strong>Confidentiality:</strong> All personal information shared during consultations is held in absolute confidence, protected by both mundane and spiritual safeguards.</p>
+                        
+                        <p><strong>Follow-up Support:</strong> Ongoing guidance is available as you integrate the insights and practices provided during your consultation sessions.</p>
+                    </div>
+                </div>
+
+                <div class="ritual-box">
+                    <div class="ritual-header">Community Involvement Opportunities</div>
+                    <div class="ritual-content">
+                        <p><strong>Local Study Groups:</strong> Monthly gatherings in major cities worldwide for discussion of spiritual topics, group meditations, and community building.</p>
+                        
+                        <p><strong>Online Forums:</strong> Moderated discussion spaces for sharing experiences, asking questions, and connecting with fellow seekers on the path of awakening.</p>
+                        
+                        <p><strong>Volunteer Network:</strong> Opportunities to assist with transcription of channeled texts, organization of events, maintenance of sacred spaces, and outreach to new seekers.</p>
+                        
+                        <p><strong>Advanced Training Programs:</strong> Intensive workshops for developing specific spiritual abilities like shadow manipulation, temporal perception, and dream walking.</p>
+                        
+                        <p><strong>Global Meditation Network:</strong> Coordinated worldwide meditations during significant celestial events to amplify collective consciousness and prepare for the Convergence.</p>
+                    </div>
+                </div>
+
+                <div class="prophecy-scroll">
+                    <h3>TESTIMONIALS FROM THE AWAKENED</h3>
+                    <p><strong>Sarah M., Denver:</strong> "My consultation with Aetheros completely transformed my understanding of my life purpose. The prophecy he provided has proven accurate in every detail, and the spiritual practices he taught have awakened abilities I never knew I possessed."</p>
+                    
+                    <p><strong>Michael R., London:</strong> "I was skeptical at first, but during the dream communication session, Aetheros appeared with the exact message I needed to hear. It led me to discover my own past-life memories and understand my role in the coming transformation."</p>
+                    
+                    <p><strong>Chen L., Singapore:</strong> "The shadow manipulation techniques I learned have not only enhanced my spiritual development but also helped me assist others in my community. The knowledge shared is both practical and profound."</p>
+                </div>
+
+                <div class="ritual-box">
+                    <div class="ritual-header">Frequently Asked Questions</div>
+                    <div class="ritual-content">
+                        <p><strong>Q: How do I know if I'm ready for spiritual guidance?</strong><br>
+                        A: If you're asking this question, you're already beginning to awaken. Trust your intuition and take the first step.</p>
+                        
+                        <p><strong>Q: Can you help with material/financial problems?</strong><br>
+                        A: My guidance focuses on spiritual development, though this often leads to improvements in all areas of life as you align with your true purpose.</p>
+                        
+                        <p><strong>Q: Is this compatible with my existing religious beliefs?</strong><br>
+                        A: Divine wisdom transcends all human religious systems. Many find that this knowledge deepens rather than conflicts with their existing faith.</p>
+                        
+                        <p><strong>Q: How can I verify your claims about being a reincarnated deity?</strong><br>
+                        A: Verification comes through direct experience. The wisdom shared and the results achieved speak louder than any credentials.</p>
+                    </div>
+                </div>
+
+                <p>Whether you seek personal guidance, wish to join our growing community of awakened souls, or simply desire to learn more about the approaching transformation, multiple pathways are available for sincere communication. The divine light within recognizes itself across all barriers of space, time, and circumstance.</p>
+            </div>
+        </div>
+
+        <!-- Footer Frame -->
+        <div class="footer-frame">
+            <div class="web-ring">
+                <strong>DIVINE NETWORK WEB RING</strong><br>
+                <a href="#">&lt;&lt; Prev</a> | <a href="#">Random</a> | <a href="#">Next &gt;&gt;</a><br>
+                Member of the Sacred Knowledge Preservation Alliance
+            </div>
+            
+            <div class="footer-links">
+                <div class="footer-section">
+                    <h4>SACRED TEXTS</h4>
+                    <ul>
+                        <li><a href="#">The Complete Umbral Codex</a></li>
+                        <li><a href="#">Meditations on Shadow & Light</a></li>
+                        <li><a href="#">Seven Lives Remembered - Full Memoir</a></li>
+                        <li><a href="#">Prophecies of the Convergence</a></li>
+                        <li><a href="#">Practical Shadow Manipulation</a></li>
+                        <li><a href="#">Timeline Navigation Techniques</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>COMMUNITY RESOURCES</h4>
+                    <ul>
+                        <li><a href="#">Forums of the Awakened</a></li>
+                        <li><a href="#">Local Gathering Directories</a></li>
+                        <li><a href="#">Monthly Teaching Webinars</a></li>
+                        <li><a href="#">Advanced Mentorship Program</a></li>
+                        <li><a href="#">Global Meditation Schedule</a></li>
+                        <li><a href="#">Student Practice Journals</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>CONTACT & SERVICES</h4>
+                    <ul>
+                        <li><a href="#">Personal Spiritual Consultations</a></li>
+                        <li><a href="#">Media & Speaking Inquiries</a></li>
+                        <li><a href="#">Academic Research Collaboration</a></li>
+                        <li><a href="#">Emergency Divine Guidance Hotline</a></li>
+                        <li><a href="#">Artifact Authentication Services</a></li>
+                        <li><a href="#">Corporate Consciousness Training</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="visitor-counter">
+                <div class="blink-text">※ SITE BLESSED BY SEVEN DIVINE GUARDIANS ※</div>
+                <p>Copyright © 2025 Aetheros Umbralath - All Rights Reserved Across All Dimensions<br>
+                Website Consecrated Under Full Moon Eclipse - Sacred HTML Powered by Divine Inspiration<br>
+                <span class="blink-text">Last Dimensional Update: Temporal Flux Date 847.3.22</span></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create twinkling stars
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const numStars = 100;
+            
+            for (let i = 0; i < numStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Tab switching functionality - completely replaces content
+        function showTab(tabName) {
+            // Remove active class from all nav buttons
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+            
+            // Hide all content areas
+            document.querySelectorAll('.content-area').forEach(area => {
+                area.classList.remove('active');
+            });
+            
+            // Show selected content area
+            document.getElementById(tabName).classList.add('active');
+            
+            // Update content title
+            const titles = {
+                'awakening': 'THE DIVINE AWAKENING - EMERGENCE OF FORGOTTEN DEITY',
+                'powers': 'DIVINE ABILITIES & SUPERNATURAL MANIFESTATIONS',
+                'memories': 'ECHOES ACROSS THE AGES - MEMORIES OF SEVEN INCARNATIONS',
+                'artifacts': 'SACRED OBJECTS & DIVINE RELICS - MYSTICAL ARTIFACT COLLECTION',
+                'rituals': 'SACRED PRACTICES & CEREMONIAL RITUALS - DIVINE PROCEDURES',
+                'prophecies': 'VISIONS OF WHAT IS TO COME - DIVINE PROPHECIES & FUTURE SIGHT',
+                'communion': 'COMMUNION WITH THE DIVINE - CONTACT & CONSULTATION SERVICES'
+            };
+            
+            document.getElementById('content-title').textContent = titles[tabName];
+        }
+
+        // Collapsible ritual boxes
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('ritual-header')) {
+                const ritualBox = e.target.parentElement;
+                ritualBox.classList.toggle('expanded');
+            }
+        });
+
+        // Classic web counter animations
+        function updateCounters() {
+            const visitorCount = document.getElementById('visitor-count');
+            const daysCount = document.getElementById('days-count');
+            
+            if (visitorCount && daysCount) {
+                // Simulate visitor count increase
+                let currentVisitors = parseInt(visitorCount.textContent.replace(/,/g, ''));
+                currentVisitors += Math.floor(Math.random() * 3) + 1;
+                visitorCount.textContent = currentVisitors.toLocaleString().padStart(7, '0');
+                
+                // Update days count
+                let currentDays = parseInt(daysCount.textContent.replace(/,/g, ''));
+                currentDays += Math.floor(Math.random() * 2);
+                daysCount.textContent = currentDays.toLocaleString();
+            }
+        }
+
+        // Mystical effects
+        function addMysticalEffects() {
+            // Random power fluctuations
+            if (Math.random() < 0.05) {
+                document.body.style.filter = 'brightness(0.8)';
+                setTimeout(() => {
+                    document.body.style.filter = 'brightness(1)';
+                }, 150);
+            }
+            
+            // Cosmic whispers
+            if (Math.random() < 0.02) {
+                const whisper = document.createElement('div');
+                whisper.textContent = '...the convergence approaches...';
+                whisper.style.position = 'fixed';
+                whisper.style.top = '50%';
+                whisper.style.left = '50%';
+                whisper.style.transform = 'translate(-50%, -50%)';
+                whisper.style.color = '#ffcc00';
+                whisper.style.fontSize = '12px';
+                whisper.style.fontStyle = 'italic';
+                whisper.style.pointerEvents = 'none';
+                whisper.style.zIndex = '999';
+                whisper.style.opacity = '0';
+                whisper.style.transition = 'opacity 2s ease';
+                
+                document.body.appendChild(whisper);
+                
+                setTimeout(() => {
+                    whisper.style.opacity = '0.8';
+                    setTimeout(() => {
+                        whisper.style.opacity = '0';
+                        setTimeout(() => {
+                            whisper.remove();
+                        }, 2000);
+                    }, 1500);
+                }, 100);
+            }
+        }
+
+        // Initialize everything
+        window.addEventListener('load', function() {
+            createStars();
+            
+            // Update counters periodically
+            setInterval(updateCounters, 30000);
+            
+            // Add mystical effects
+            setInterval(addMysticalEffects, 5000);
+            
+            // Classic web alert for first-time visitors
+            if (!localStorage.getItem('visited_before')) {
+                setTimeout(() => {
+                    alert('Welcome, seeker. You have entered the sacred digital realm of Aetheros Umbralath. Prepare your consciousness for divine knowledge transmission.');
+                    localStorage.setItem('visited_before', 'true');
+                }, 2000);
+            }
+        });
+
+        // Classic web features
+        document.addEventListener('contextmenu', function(e) {
+            if (Math.random() < 0.3) {
+                e.preventDefault();
+                alert('The shadows protect this sacred knowledge from unauthorized copying.');
+            }
+        });
+
+        // Artifact click effects
+        document.querySelectorAll('.artifact-item').forEach(item => {
+            item.addEventListener('click', function() {
+                alert('In a full implementation, this would open a detailed artifact examination window with 3D visualization and historical documentation.');
+            });
+        });
+    </script>
+</body>
+</html>
